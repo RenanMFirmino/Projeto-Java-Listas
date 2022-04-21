@@ -59,7 +59,8 @@ public class Lista extends Aluno {
 		for (int i = 0; i < tamanho; i++)
 			System.out.println(	"\nAluno " +(i + 1)
 								+"\nNome: " +alunos[i].nome
-								+"\nRgm: "+alunos[i].rgm);
+								+"\nRgm: "+alunos[i].rgm
+								+"\nMateria: "+alunos[i].materia);
 		
 	}
 }

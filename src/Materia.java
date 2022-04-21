@@ -1,5 +1,5 @@
 
-public class Materia extends Aluno{
+public class Materia {
 	Aluno	primeiro = null;
 	Aluno	ultimo = null;
 	int		tamanho = 0;
