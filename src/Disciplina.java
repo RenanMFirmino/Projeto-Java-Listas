@@ -1,54 +1,57 @@
 
-public class Materia {
-	Aluno	primeiro = null;
-	Aluno	ultimo = null;
-	int		tamanho = 0;
+public class Disciplina  {
+	No	primeiro = null;
+	No	ultimo = null;
+	int		quantidadeMaterias = 0;
 	public boolean estaVazia() {
-		if (tamanho == 0)
+		if (quantidadeMaterias == 0)
 			return true;
 		
 		return false;
 	}
 	public int tamanhoDaLista() {
-		return (tamanho);
+		return (quantidadeMaterias);
 	}
-	public void inserirMateriaInicio(Aluno a) {
+	public void inserirMateriaInicio(No a) {
+		No temp= new No();
 		if (estaVazia())
 			primeiro = ultimo = a;
 		else {
-			a.proximo = primeiro;
-			primeiro = a;
+			temp.materia=a.materia;
+			temp.proximo = a;
+			primeiro = temp;
 		}
-		tamanho++;
+		quantidadeMaterias++;
 	}
-	public void inserirNoFim(Aluno a) {
+	public void inserirNoFim(No a) {
 		if (estaVazia())
 			primeiro = ultimo = a;
 		else {
 			ultimo.proximo = a;
 			ultimo = a;
 		}
-		tamanho++;
+		quantidadeMaterias++;
 	}
-	public void exibirLista() {
-		Aluno temp = primeiro;
+	public void exibirListaMaterias() {
+		No temp = primeiro;
 		if (!estaVazia()) {
-			for (int i = 0; i < tamanho; i++) {
-				System.out.println(  (i+1)+"º Materia: "+temp.materia);
+			System.out.println("Materias:");
+			for (int i = 0; i < quantidadeMaterias; i++) {
+				System.out.println( (i+1)+"º Materia: "+temp.materia);
 				temp = temp.proximo;
 			}
 		}
 	}
 	public void removerMateriaPorNome(String materiaprocurada) {
-		if (tamanho == 0) {
+		if (quantidadeMaterias == 0) {
 			System.out.println("Lista está vazia");
 			return;
 		}
 		
-		if (tamanho == 1) {
+		if (quantidadeMaterias == 1) {
 			if (primeiro.materia.equals(materiaprocurada)) {
 					primeiro = ultimo = null;
-					tamanho--;
+					quantidadeMaterias--;
 					return;
 			}
 			else {
@@ -57,20 +60,20 @@ public class Materia {
 			}
 		}
 		
-		Aluno materiadafrente = primeiro;
-		Aluno materiadetras = null;
+		No materiadafrente = primeiro;
+		No materiadetras = null;
 		
-		for (int i = 0; i < tamanho; i++) {
+		for (int i = 0; i < quantidadeMaterias; i++) {
 			if (materiaprocurada.equals(materiadafrente.materia)) {
 				if (i == 0) {
 					System.out.println("O primeiro da lista é o procurado e será removido.");
 					primeiro = primeiro.proximo;
-					tamanho--;
+					quantidadeMaterias--;
 					return;
 				}
 				else {
 					materiadetras.materia = materiadafrente.materia;
-					tamanho--;
+					quantidadeMaterias--;
 					return;
 				}
 			}
