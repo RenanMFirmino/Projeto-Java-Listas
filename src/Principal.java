@@ -26,8 +26,18 @@ public class Principal {
 				Disciplina materia = aluno.getMateria();
 				System.out.println("Digite o Nome:");
 				nome=teclado.nextLine();
+				while(sala.comparaNome(nome)==1) {
+					System.out.println("Outro aluno já possui este nome");
+					System.out.println("Digite outro Nome:");
+					nome=teclado.nextLine();
+				}
 				System.out.println("Digite o RGM:");
 				rgm=teclado.nextInt();
+				while(sala.comparaRgm(rgm)==1) {
+					System.out.println("Outro aluno já possui este RGM");
+					System.out.println("Digite outro RGM:");
+					rgm=teclado.nextInt();
+				}
 				teclado.nextLine();
 				aluno.setDados(rgm, nome);
 				do {
@@ -64,6 +74,10 @@ public class Principal {
 				int excluir= teclado.nextInt();
 				sala.removerAlunoPorRgm(excluir);
 				sala.exibirLista();
+				break;
+			}
+			case 5:{
+				System.out.println("Fechando o programa");
 				break;
 			}
 			default:{

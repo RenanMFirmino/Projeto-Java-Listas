@@ -2,7 +2,7 @@
 public class Aluno {
 	String nome;
 	int rgm;
-	Disciplina materia=new Disciplina();
+	Disciplina materia=new Disciplina();//Criando a lista encadeada
 	public String getNome() {
 		return nome;
 	}
@@ -18,10 +18,10 @@ public class Aluno {
 	public Disciplina getMateria() {
 		return materia;
 	}
-	public void setMateria(Disciplina materia) {
+	public void setMateria(Disciplina materia) {//Recebendo as materias e seus ponteiros
 		this.materia=materia;
 	}
-	public void setDados (int matricula, String novoNome) {
+	public void setDados (int matricula, String novoNome) {//Recebendo RGM e nome fo Aluno
 		rgm = matricula;
 		nome = novoNome;
 	}

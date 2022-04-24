@@ -22,7 +22,7 @@ public class Lista {
 		
 		return alunos[pos];
 	}
-	public void buscaRGM(int rgm) {
+	public void buscaRGM(int rgm) {//Procura e apresenta informações do Aluno desejado
  		for(int i = 0; i < tamanhoLista; i++) {
  			if(alunos[i].getRgm() == rgm) {
  				System.out.println("Nome:\t" + alunos[i].getNome() 
@@ -36,6 +36,22 @@ public class Lista {
 	public boolean Compara(Aluno c1, Aluno c2) {
 		return(c1.nome.equals(c2.nome)) && (c1.rgm==c2.rgm);
 	}
+	public int comparaNome(String nome) {
+		for(int i=0;i<tamanhoLista;i++) {
+			if(alunos[i].nome.equalsIgnoreCase(nome)) {
+				return 1;
+			}
+		}
+		return 0;
+	}
+	public int comparaRgm(int rgm) {
+		for(int i=0;i<tamanhoLista;i++) {
+			if(alunos[i].rgm==rgm) {
+				return 1;
+			}
+		}
+		return 0;
+	}
 	public int retornarPosicao(Aluno aluno) {
 		for (int i = 0; i <= tamanhoLista; i++)
 			if (Compara(alunos[i], aluno))
@@ -46,7 +62,7 @@ public class Lista {
 		for (int i = tamanhoLista; i > pos; i--)
 			alunos[i] = alunos[i - 1];
 	}
-	public boolean inserirAluno (int pos, Aluno c1) {
+	public boolean inserirAluno (int pos, Aluno c1) {//Inseri o Aluno em sua respectiva posição
 		if (estaCheia() || (pos > tamanhoLista) || (pos < 0))
 			return false;
 		deslocarParaDireita(pos);
@@ -55,23 +71,18 @@ public class Lista {
 		ordenar();
 		return true;
 	}
-	public void ordenar() {
-		Aluno c1=new Aluno();
-		Aluno c2=new Aluno();
-		for(int i=0;i<tamanhoLista;i++) {
-			c1=alunos[i];
-			if(i==0) {
-				c2=c1;
-			}else {
-				if(c2.rgm>c1.rgm) {
-				alunos[i]=c2;
-				alunos[i-1]=c1;
-				c2=alunos[i];
+	public void ordenar() {//Ordena a Lista usando o RGM de cada Aluno/Tipo Bubble sort
+		Aluno temp=new Aluno();
+		for(int i=0;i<tamanhoLista - 1;i++) {
+			for(int j=0;j<tamanhoLista - i - 1;j++) {
+				if(alunos[j].rgm>alunos[j + 1].rgm) {
+					temp=alunos[j];
+					alunos[j]=alunos[j + 1];
+					alunos[j + 1]=temp;
 				}
 			}
-			
-			
 		}
+		
 	}
 	public boolean inserirAlunoRgm (int pos, Aluno c1) {
 		if (estaCheia() || (pos > tamanhoLista) || (pos < 0))
@@ -94,7 +105,7 @@ public class Lista {
 		for (int i = pos; i < (tamanhoLista - 1); i++)
 			alunos[i] = alunos[i + 1];
 	}
-	public Aluno removerAlunoPorRgm (int rgm) {
+	public Aluno removerAlunoPorRgm (int rgm) {//Remove Aluno usando o RGM
 		int pos=-1;
 		for(int i = 0; i < tamanhoLista; i++) {
  			if(alunos[i].getRgm() == rgm) {
@@ -102,14 +113,17 @@ public class Lista {
  				break;
  			}
 		}
-		if ((pos > tamanhoLista) || (pos < 0))
+		if ((pos > tamanhoLista) || (pos < 0)) {
+			System.out.println("Não existe Aluno com este RGM.");
 			return null;
+		}
+			
 		Aluno aux = alunos[pos];
 		deslocarParaEsquerda(pos);
 		tamanhoLista--;
 		return aux;
 	}
-	public void exibirLista() {
+	public void exibirLista() {//Exibe todos os dados do Aluno: Nome, RGM e Materias alocadas
 		
 		for (int i = 0; i < tamanhoLista; i++) {
 			System.out.println(	"\nAluno " +(i + 1)
