@@ -37,7 +37,8 @@ public class Disciplina  {
 		if (!estaVazia()) {
 			System.out.println("Materias:");
 			for (int i = 0; i < quantidadeMaterias; i++) {
-				System.out.println( (i+1)+"º Materia: "+temp.materia);
+				System.out.println( (i+1)+"º Materia: "+temp.materia+
+						"\nNota: "+temp.nota+"\n");
 				temp = temp.proximo;
 			}
 		}
@@ -66,7 +67,6 @@ public class Disciplina  {
 		for (int i = 0; i < quantidadeMaterias; i++) {
 			if (materiaprocurada.equals(materiadafrente.materia)) {
 				if (i == 0) {
-					System.out.println("O primeiro da lista é o procurado e será removido.");
 					primeiro = primeiro.proximo;
 					quantidadeMaterias--;
 					return;

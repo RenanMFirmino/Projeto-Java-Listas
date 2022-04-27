@@ -11,6 +11,7 @@ public class Principal {
 		int i;
 		do {
 			i=sala.tamanhoLista;
+			System.out.println("Gerenciador de Alunos");
 			System.out.println("Menu:");
 			System.out.println("Digite 1-Adicionar, 2-Exibir Lista");
 			System.out.println("3-Procurar Aluno, 4-Remover Aluno");
@@ -26,11 +27,6 @@ public class Principal {
 				Disciplina materia = aluno.getMateria();
 				System.out.println("Digite o Nome:");
 				nome=teclado.nextLine();
-				while(sala.comparaNome(nome)==1) {
-					System.out.println("Outro aluno já possui este nome");
-					System.out.println("Digite outro Nome:");
-					nome=teclado.nextLine();
-				}
 				System.out.println("Digite o RGM:");
 				rgm=teclado.nextInt();
 				while(sala.comparaRgm(rgm)==1) {
@@ -43,9 +39,12 @@ public class Principal {
 				do {
 					No novoNo= new No();
 					String novaMateria;
+					String novaNota;
 					System.out.println("Digite a Disciplina:");
 					novaMateria=teclado.nextLine();
-					novoNo.setMateria(novaMateria);
+					System.out.println("Digite a nota:");
+					novaNota=teclado.nextLine();
+					novoNo.setDadosMateria(novaMateria, novaNota);
 					materia.inserirNoFim(novoNo);
 					System.out.println("Mais Disciplina?\ns(sim) ou n(não):");
 					resp=teclado.nextLine();
@@ -56,7 +55,7 @@ public class Principal {
 					}
 				}while(!resp.equals("n"));
 				aluno.setMateria(materia);
-				sala.inserirAluno(i, aluno);
+				sala.inserirAlunoRgm(i, aluno);
 				break;
 			}
 			case 2:{
