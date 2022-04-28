@@ -1,14 +1,23 @@
 # Projeto-Java-Listas
 Curso: Ciências da Computação
+
 Disciplina: Programação Orientada a Objetos
+
 Professor: Walter Travesso Sarin
+
 Professor: Walace Sartori Bonfim
+
 Alunos:
 RENAN MONTEIRO FIRMINO – RGM 27822851
+
 FABIO HENRIQUE REZENDE GARCIA – RGM 27677486
+
 SAMUEL ESTEVAM DA SILVA – RGM 27699633
+
 MATHEUS RAMALHO DE LIMA – 30538297
+
 MINI PROJETO
+
 APLICAÇÃO PARA LISTAS SEQUENCIAL E ENCADEADA
 
 Objetivo:
